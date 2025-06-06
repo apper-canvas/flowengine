@@ -25,10 +25,11 @@ export default {
           500: '#9DAD9D',
           600: '#829882',
           700: '#677367',
-          800: '#4C5E4C',
-          900: '#334933'
+800: '#4C5E4C',
+         900: '#334933'
         },
         zen: {
+          DEFAULT: '#5A8A6F',
           mist: '#F5F7F5',
           white: '#FAFBFA',
           sage: '#5A8A6F',
