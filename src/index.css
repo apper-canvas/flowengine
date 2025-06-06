@@ -1,55 +1,306 @@
+/*
+ * ZEN FLOW - Task Manager Styles
+ * A beautiful, maintainable stylesheet organized for performance and scalability
+ * Built on top of Tailwind CSS with custom utilities and components
+ */
+
+/* ===== EXTERNAL IMPORTS ===== */
 @import 'react-toastify/dist/ReactToastify.css';
+
+/* ===== TAILWIND LAYERS ===== */
 @tailwind base;
-@tailwind components;
+@tailwind components; 
 @tailwind utilities;
 
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  /* Color System - Zen Palette */
+  --color-zen-white: #FAFBFA;
+  --color-zen-mist: #F5F7F5;
+  --color-zen-sage: #5A8A6F;
+  --color-zen-forest: #2D5A3D;
+  --color-zen-mint: #8FBC8F;
+  
+  /* Surface Colors */
+  --color-surface-50: #FAFBFA;
+  --color-surface-100: #F5F7F5;
+  --color-surface-800: #4C5E4C;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Shadows */
+  --shadow-zen: 0px 2px 4px rgba(45, 90, 61, 0.08), 0px 4px 8px rgba(45, 90, 61, 0.05), 0px 8px 16px rgba(45, 90, 61, 0.03);
+  --shadow-float: 0 8px 32px rgba(45, 90, 61, 0.12);
+  
+  /* Animation Timing */
+  --timing-fast: 0.2s;
+  --timing-normal: 0.3s;
+  --timing-slow: 0.5s;
+  
+  /* Glass Effect Values */
+  --glass-blur: 16px;
+  --glass-opacity: 0.8;
+}
+
+/* ===== BASE LAYER OVERRIDES ===== */
 @layer base {
+  /*
+   * Global body styles - sets foundation for the entire application
+   * Uses Tailwind utilities for consistency with design system
+   */
   body {
     @apply font-sans bg-zen-white text-surface-800;
+    /* Fallback for older browsers */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-zen-white);
+    color: var(--color-surface-800);
   }
   
+  /*
+   * Typography hierarchy - applies consistent heading fonts
+   * Uses custom font family defined in Tailwind config
+   */
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+    /* Fallback for font loading */
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /*
+   * Focus styles for accessibility
+   * Provides clear visual feedback for keyboard navigation
+   */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-zen-sage ring-offset-2 ring-offset-zen-white;
   }
 }
 
+/* ===== UTILITY LAYER EXTENSIONS ===== */
 @layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  /*
+   * Scrollbar utilities - creates clean, minimal scrolling experience
+   * Cross-browser compatible hidden scrollbars
+   */
+  .utility--scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
   
-  .paper-texture {
-    background-image: 
-      radial-gradient(circle at 1px 1px, rgba(45, 90, 61, 0.02) 1px, transparent 0);
+  .utility--scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /*
+   * Paper texture utility - adds subtle dot pattern for paper-like feel
+   * Low opacity to maintain readability while adding visual interest
+   */
+  .utility--paper-texture {
+    background-image: radial-gradient(
+      circle at 1px 1px, 
+      rgba(45, 90, 61, 0.02) 1px, 
+      transparent 0
+    );
     background-size: 20px 20px;
+    /* Fallback for older browsers */
+    background-color: var(--color-zen-white);
   }
   
-  .glass-morphism {
-    backdrop-filter: blur(16px);
-    background: rgba(245, 247, 245, 0.8);
+  /*
+   * Glass morphism utility - creates modern frosted glass effect
+   * Includes fallback for browsers without backdrop-filter support
+   */
+  .utility--glass-morphism {
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* Safari support */
+    background: rgba(245, 247, 245, var(--glass-opacity));
+    /* Fallback for unsupported browsers */
+    background: var(--color-zen-mist);
   }
   
-  .zen-gradient {
-    background: linear-gradient(135deg, #FAFBFA 0%, #F5F7F5 100%);
+  /*
+   * Zen gradient utility - applies brand gradient background
+   * Subtle gradient from white to mist for depth without distraction
+   */
+  .utility--zen-gradient {
+    background: linear-gradient(
+      135deg, 
+      var(--color-zen-white) 0%, 
+      var(--color-zen-mist) 100%
+    );
+    /* Fallback */
+    background-color: var(--color-zen-white);
+  }
+  
+  /*
+   * Animation utilities - smooth transitions for interactive elements
+   * Consistent timing across the application
+   */
+  .utility--transition-smooth {
+    transition: all var(--timing-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .utility--transition-fast {
+    transition: all var(--timing-fast) ease-out;
   }
 }
 
-/* Toast styling for zen theme */
+/* ===== COMPONENT LAYER - TOAST NOTIFICATIONS ===== */
+@layer components {
+  /*
+   * Toast notification styling - customizes react-toastify to match zen theme
+   * Maintains accessibility while providing branded experience
+   */
+  
+  /* Base toast container */
+  .toast {
+    @apply rounded-xl;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-zen);
+    font-family: inherit;
+  }
+  
+  /* Success state - uses zen sage color for positive feedback */
+  .toast--success {
+    @apply bg-zen-sage text-white;
+    background-color: var(--color-zen-sage);
+    color: white;
+  }
+  
+  /* Error state - uses semantic red for clear error indication */
+  .toast--error {
+    @apply bg-red-500 text-white;
+    background-color: #ef4444; /* Tailwind red-500 fallback */
+    color: white;
+  }
+  
+  /* Info state - uses muted sage for neutral information */
+  .toast--info {
+    @apply bg-surface-100 text-surface-800 border border-surface-200;
+    background-color: var(--color-surface-100);
+    color: var(--color-surface-800);
+  }
+  
+  /* Progress bar styling */
+  .toast__progress-bar--success {
+    @apply bg-zen-mint;
+    background-color: var(--color-zen-mint);
+  }
+  
+  .toast__progress-bar--error {
+    @apply bg-red-300;
+    background-color: #fca5a5; /* Tailwind red-300 fallback */
+  }
+}
+
+/* ===== REACT-TOASTIFY OVERRIDE SELECTORS ===== */
+/*
+ * These selectors override react-toastify's default styles
+ * Maintains library functionality while applying custom theming
+ */
 .Toastify__toast {
-  @apply rounded-xl shadow-zen;
+  @apply rounded-xl;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-zen) !important;
+  font-family: inherit !important;
+  min-height: auto !important;
 }
 
 .Toastify__toast--success {
   @apply bg-zen-sage text-white;
+  background-color: var(--color-zen-sage) !important;
+  color: white !important;
 }
+
 .Toastify__toast--error {
   @apply bg-red-500 text-white;
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.Toastify__toast--info {
+  @apply bg-surface-100 text-surface-800;
+  background-color: var(--color-surface-100) !important;
+  color: var(--color-surface-800) !important;
 }
 
 .Toastify__progress-bar--success {
   @apply bg-zen-mint;
+  background-color: var(--color-zen-mint) !important;
+}
+
+.Toastify__progress-bar--error {
+  @apply bg-red-300;
+  background-color: #fca5a5 !important;
+}
+
+.Toastify__close-button {
+  color: inherit !important;
+  opacity: 0.7 !important;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1 !important;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  /*
+   * Print-specific styles for better document output
+   * Removes shadows and adjusts colors for print media
+   */
+  .utility--glass-morphism,
+  .utility--paper-texture {
+    background: white !important;
+    backdrop-filter: none !important;
+  }
+  
+  .toast,
+  .Toastify__toast {
+    display: none !important;
+  }
+}
+
+/* ===== REDUCED MOTION PREFERENCES ===== */
+@media (prefers-reduced-motion: reduce) {
+  /*
+   * Respects user's motion preferences for accessibility
+   * Disables animations for users who prefer reduced motion
+   */
+  .utility--transition-smooth,
+  .utility--transition-fast {
+    transition: none !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE SUPPORT ===== */
+@media (prefers-contrast: high) {
+  /*
+   * Enhanced contrast for better accessibility
+   * Strengthens borders and shadows for users who need higher contrast
+   */
+  .utility--glass-morphism {
+    border: 1px solid var(--color-surface-800) !important;
+  }
+  
+  .toast,
+  .Toastify__toast {
+    border: 2px solid currentColor !important;
+  }
 }
