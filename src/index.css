@@ -1,0 +1,56 @@
+@import 'react-toastify/dist/ReactToastify.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-zen-white text-surface-800;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .paper-texture {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(45, 90, 61, 0.02) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  .glass-morphism {
+    backdrop-filter: blur(16px);
+    background: rgba(245, 247, 245, 0.8);
+  }
+  
+  .zen-gradient {
+    background: linear-gradient(135deg, #FAFBFA 0%, #F5F7F5 100%);
+  }
+}
+
+/* Toast styling for zen theme */
+.Toastify__toast {
+  @apply rounded-xl shadow-zen;
+}
+
+.Toastify__toast--success {
+  @apply bg-zen-sage text-white;
+}
+
+.Toastify__toast--error {
+  @apply bg-red-500 text-white;
+}
+
+.Toastify__progress-bar--success {
+  @apply bg-zen-mint;
+}

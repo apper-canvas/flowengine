@@ -1,0 +1,92 @@
+[
+  {
+    "date": "2024-01-15",
+    "tasksCompleted": 6,
+    "focusMinutes": 180,
+    "plantGrowth": 85
+  },
+  {
+    "date": "2024-01-14",
+    "tasksCompleted": 4,
+    "focusMinutes": 120,
+    "plantGrowth": 60
+  },
+  {
+    "date": "2024-01-13",
+    "tasksCompleted": 8,
+    "focusMinutes": 240,
+    "plantGrowth": 100
+  },
+  {
+    "date": "2024-01-12",
+    "tasksCompleted": 3,
+    "focusMinutes": 90,
+    "plantGrowth": 45
+  },
+  {
+    "date": "2024-01-11",
+    "tasksCompleted": 7,
+    "focusMinutes": 210,
+    "plantGrowth": 95
+  },
+  {
+    "date": "2024-01-10",
+    "tasksCompleted": 5,
+    "focusMinutes": 150,
+    "plantGrowth": 70
+  },
+  {
+    "date": "2024-01-09",
+    "tasksCompleted": 2,
+    "focusMinutes": 60,
+    "plantGrowth": 30
+  },
+  {
+    "date": "2024-01-08",
+    "tasksCompleted": 9,
+    "focusMinutes": 270,
+    "plantGrowth": 100
+  },
+  {
+    "date": "2024-01-07",
+    "tasksCompleted": 4,
+    "focusMinutes": 135,
+    "plantGrowth": 65
+  },
+  {
+    "date": "2024-01-06",
+    "tasksCompleted": 6,
+    "focusMinutes": 195,
+    "plantGrowth": 88
+  },
+  {
+    "date": "2024-01-05",
+    "tasksCompleted": 3,
+    "focusMinutes": 105,
+    "plantGrowth": 50
+  },
+  {
+    "date": "2024-01-04",
+    "tasksCompleted": 7,
+    "focusMinutes": 225,
+    "plantGrowth": 92
+  },
+  {
+    "date": "2024-01-03",
+    "tasksCompleted": 5,
+    "focusMinutes": 165,
+    "plantGrowth": 75
+  },
+  {
+    "date": "2024-01-02",
+    "tasksCompleted": 1,
+    "focusMinutes": 45,
+    "plantGrowth": 20
+  },
+  {
+    "date": "2024-01-01",
+    "tasksCompleted": 8,
+    "focusMinutes": 255,
+    "plantGrowth": 100
+  }
+]
